@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Eye, EyeOff, LockKeyhole } from "@/components/icons";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/client";
 import { authSchema, passwordSchema } from "@/lib/validation";
+import { safeRedirectPath } from "@/lib/navigation";
 
 export type AuthMode = "login" | "signup" | "forgot" | "reset";
 
@@ -19,7 +20,7 @@ export function AuthForm({ mode, redirectTo = "/dashboard" }: { mode: AuthMode; 
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const configured = isSupabaseConfigured();
-  const safeRedirect = redirectTo.startsWith("/") && !redirectTo.startsWith("//") ? redirectTo : "/dashboard";
+  const safeRedirect = safeRedirectPath(redirectTo);
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();

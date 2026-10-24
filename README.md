@@ -41,6 +41,7 @@ Playwright covers the requested 360px, 390px, 768px, and 1440px layouts. Unit te
 
 - `docs/PharmaLens-Localhost-Setup-Guide.pdf` — branded, print-ready product and localhost guide
 - `docs/PHARMALENS_LOCAL_SETUP_GUIDE.md` — editable guide source
+- `docs/SUPABASE_RENDER_SETUP.md` — step-by-step Supabase and Render connection guide
 - `docs/ARCHITECTURE.md`
 - `docs/SCREENING_POLICY.md`
 - `docs/PRIVACY_AND_DATA_FLOW.md`

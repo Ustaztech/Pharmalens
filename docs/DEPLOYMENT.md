@@ -2,6 +2,8 @@
 
 No deployment has been performed.
 
+For the complete hosted setup, including Supabase migrations, Auth redirect URLs, Render environment variables, verification, and troubleshooting, follow `docs/SUPABASE_RENDER_SETUP.md`.
+
 1. Provision a Supabase project and apply every file in `supabase/migrations/` in numeric order.
 2. Do not apply `supabase/seed_demo.sql` to production. It creates a separate fictional `demo` schema for local demonstrations.
 3. Configure the private storage buckets and verify all policies were applied.
