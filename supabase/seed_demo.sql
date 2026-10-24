@@ -1,0 +1,5 @@
+-- FICTIONAL DEMONSTRATION DATA. Never apply to a production project.
+create schema if not exists demo;
+create table if not exists demo.products(id uuid primary key default gen_random_uuid(),name text not null,presentation text not null,strength text not null,dosage_form text not null,manufacturer text not null,fictional boolean not null default true);
+create table if not exists demo.reference_versions(id uuid primary key default gen_random_uuid(),product_id uuid not null references demo.products(id),version integer not null,packaging_version text not null,package_text text[] not null,status text not null default 'published',source text not null default 'FICTIONAL DEMONSTRATION REFERENCE',reviewed_at timestamptz not null default now());
+with p as (insert into demo.products(name,presentation,strength,dosage_form,manufacturer) values('Democillin','20 tablet carton','250 mg','tablet','Example Health Works (fictional)') returning id) insert into demo.reference_versions(product_id,version,packaging_version,package_text) select id,1,'DEMO-BOX-A',array['DEMONSTRATION ONLY','250 mg','Example Health Works'] from p;

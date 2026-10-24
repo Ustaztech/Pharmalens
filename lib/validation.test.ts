@@ -1,0 +1,2 @@
+import { describe,expect,it } from "vitest";import { reportSchema } from "@/lib/validation";
+describe("report consent",()=>{it("rejects a report without explicit consent",()=>expect(reportSchema.safeParse({scanId:"scan",reason:"other",consentToShare:false}).success).toBe(false));it("accepts bounded user notes with consent",()=>expect(reportSchema.safeParse({scanId:"scan",reason:"other",notes:"Visible seal concern",consentToShare:true}).success).toBe(true))});

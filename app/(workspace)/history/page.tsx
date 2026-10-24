@@ -1,0 +1,2 @@
+import { HistoryClient } from "@/components/history-client"; import { PageHeader } from "@/components/page-header";
+export const metadata={title:"Scan history"}; export default function Page(){return <><PageHeader eyebrow="Device-only records" title="Scan history" description="Review preliminary screening results saved in this browser. Guest history does not synchronise to the cloud."/><HistoryClient/></>}

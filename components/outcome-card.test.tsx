@@ -1,0 +1,2 @@
+import { render,screen } from "@testing-library/react"; import { describe,expect,it } from "vitest"; import { OutcomeCard } from "@/components/outcome-card";
+describe("OutcomeCard",()=>{it("explains the limitation with each full result",()=>{render(<OutcomeCard outcome="reference_match"/>);expect(screen.getByText("Reference match")).toBeInTheDocument();expect(screen.getByText(/does not confirm medicine authenticity/i)).toBeInTheDocument()})});

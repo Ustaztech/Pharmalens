@@ -1,0 +1,2 @@
+import { PageHeader } from "@/components/page-header"; import { ScanDetail } from "@/components/scan-detail";
+export const metadata={title:"Scan details"}; export default async function Page({params}:{params:Promise<{id:string}>}){const {id}=await params;return <><PageHeader back="/history" eyebrow="Private evidence record" title="Scan details" description="This record preserves the result and evidence produced at the original screening time."/><ScanDetail id={id}/></>}
