@@ -7,6 +7,7 @@ import { Logo } from "@/components/logo";
 import { clsx } from "clsx";
 import { useEffect, useState } from "react";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/client";
+import { LoadingScreen } from "@/components/loading-screen";
 
 const desktopLinks = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -35,8 +36,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const router=useRouter();
   const [email,setEmail]=useState("");
   const [role,setRole]=useState<"user"|"reviewer"|"admin">("user");
-  useEffect(()=>{if(!isSupabaseConfigured())return;const supabase=createClient();supabase.auth.getUser().then(async({data})=>{setEmail(data.user?.email??"");if(data.user){const {data:profile}=await supabase.from("profiles").select("role").eq("id",data.user.id).single();setRole(profile?.role??"user")}});const {data}=supabase.auth.onAuthStateChange((_event,session)=>setEmail(session?.user.email??""));return()=>data.subscription.unsubscribe()},[]);
+  const [authReady,setAuthReady]=useState(!isSupabaseConfigured());
+  useEffect(()=>{if(!isSupabaseConfigured())return;const supabase=createClient();supabase.auth.getUser().then(async({data})=>{setEmail(data.user?.email??"");if(data.user){const {data:profile}=await supabase.from("profiles").select("role").eq("id",data.user.id).single();setRole(profile?.role??"user")}}).finally(()=>setAuthReady(true));const {data}=supabase.auth.onAuthStateChange((_event,session)=>setEmail(session?.user.email??""));return()=>data.subscription.unsubscribe()},[]);
   async function signOut(){if(!isSupabaseConfigured())return;await createClient().auth.signOut();setEmail("");router.push("/");router.refresh()}
+  if(!authReady)return <LoadingScreen compact/>;
   return (
     <div className="app-frame">
       <aside className="sidebar">

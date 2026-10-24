@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PharmaLens — Localhost and Software Guide</title>
+  <style>
+    :root{--teal:#063f3c;--teal2:#0b625d;--mint:#d9f5ea;--paper:#f7faf9;--ink:#182522;--muted:#5e6d69;--amber:#b86b08;--line:#d8e4e0}
+    *{box-sizing:border-box} html{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#dfe8e5} body{margin:0}
+    .document{width:210mm;margin:20px auto;background:white;box-shadow:0 14px 45px #063f3c22}
+    .page{min-height:297mm;padding:17mm 18mm 15mm;position:relative;page-break-after:always;overflow:hidden}.page:last-child{page-break-after:auto}
+    .cover{background:var(--teal);color:white;display:flex;flex-direction:column;justify-content:space-between;padding:23mm 20mm}
+    .brand{display:flex;align-items:center;gap:14px}.brand svg{width:58px;height:58px}.wordmark{font-size:30px;line-height:1;font-weight:800;letter-spacing:-1px}.tagline{font-size:12px;color:var(--mint);margin-top:7px;letter-spacing:.02em}
+    .cover-main{max-width:150mm}.kicker{text-transform:uppercase;letter-spacing:.18em;color:#a9d9cc;font-size:11px;font-weight:800}.cover h1{font-size:48px;line-height:1.04;letter-spacing:-2px;margin:14px 0 18px}.cover .lead{font-size:20px;line-height:1.55;color:#e7f5f1;max-width:135mm}.edition{border-top:1px solid #ffffff33;padding-top:14px;display:flex;justify-content:space-between;color:#cce5de;font-size:11px}
+    .page-no{position:absolute;right:18mm;bottom:9mm;color:#7b8b87;font-size:10px}.page-no b{color:var(--teal)}
+    .section-mark{display:flex;align-items:center;gap:10px;color:var(--teal);font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.section-mark:before{content:"";width:26px;height:3px;background:var(--teal);border-radius:9px}
+    h2{font-size:30px;line-height:1.1;letter-spacing:-.8px;color:var(--teal);margin:13px 0 11px} h3{font-size:16px;color:var(--teal);margin:20px 0 8px} p,li{font-size:11.2px;line-height:1.62} p{margin:7px 0;color:#35433f} ul,ol{padding-left:18px;margin:7px 0} li{margin:4px 0}
+    .intro{font-size:14px;line-height:1.6;color:#344844;max-width:155mm}.callout{background:var(--mint);border-left:4px solid var(--teal);border-radius:0 12px 12px 0;padding:13px 15px;margin:14px 0}.callout strong{color:var(--teal)}
+    .warning{background:#fff5e6;border-left-color:var(--amber)}.warning strong{color:#7c4806}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:14px 0}.card{border:1px solid var(--line);border-radius:13px;padding:13px;background:#fff}.card h3{margin:0 0 6px;font-size:14px}.card p{margin:0;font-size:10.5px}.number{width:27px;height:27px;border-radius:50%;display:grid;place-items:center;background:var(--teal);color:white;font-weight:800;margin-bottom:8px}
+    .outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:13px}.outcome{padding:11px;border-radius:11px;background:#f0f5f3;border:1px solid var(--line)}.outcome.match{background:#eaf8f1;border-color:#b7e3cf}.outcome.review{background:#fff6e8;border-color:#efd4a9}.outcome h3{font-size:12px;margin:0 0 5px}.outcome p{font-size:9.5px;line-height:1.45}
+    code{font-family:"SFMono-Regular",Consolas,monospace;background:#edf3f1;border-radius:4px;padding:1px 4px;color:#174b47;font-size:.92em}.terminal{background:#102a28;color:#d9f5ea;padding:13px 15px;border-radius:11px;font:10px/1.7 "SFMono-Regular",Consolas,monospace;white-space:pre-wrap;margin:10px 0}.terminal .dim{color:#8cb5ab}
+    .step{display:grid;grid-template-columns:32px 1fr;gap:10px;margin:12px 0}.step .number{margin:0}.step h3{margin:2px 0 3px}.step p{margin:0}
+    table{width:100%;border-collapse:collapse;margin:12px 0;font-size:10px}th{text-align:left;background:var(--teal);color:white;padding:8px}td{border-bottom:1px solid var(--line);padding:8px;vertical-align:top}tr:nth-child(even) td{background:#f8fbfa}
+    .footer-brand{display:flex;align-items:center;gap:8px;color:var(--teal);font-size:10px;font-weight:700;position:absolute;left:18mm;bottom:9mm}.footer-brand span{width:16px;height:16px;border:4px solid var(--teal);border-radius:50%;display:inline-block}
+    .checklist{list-style:none;padding:0}.checklist li{position:relative;padding-left:24px}.checklist li:before{content:"✓";position:absolute;left:0;top:1px;width:16px;height:16px;border-radius:50%;background:var(--mint);color:var(--teal);display:grid;place-items:center;font-weight:800;font-size:10px}
+    .small{font-size:9.7px;color:var(--muted)}
+    @page{size:A4;margin:0}@media print{html{background:white}.document{width:auto;margin:0;box-shadow:none}.page{margin:0}}
+  </style>
+</head>
+<body><main class="document">
+  <section class="page cover">
+    <div class="brand">
+      <svg viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="120" fill="#d9f5ea"/><circle cx="226" cy="264" r="116" fill="none" stroke="#063f3c" stroke-width="44"/><circle cx="226" cy="264" r="42" fill="#063f3c"/><path d="m306 145 99 99c33 33 33 86 0 119s-86 33-119 0l-54-54 74-164Z" fill="#fff" stroke="#063f3c" stroke-width="18"/><path d="m310 190 55 55" stroke="#063f3c" stroke-width="18"/></svg>
+      <div><div class="wordmark">PharmaLens</div><div class="tagline">Scan the pack. Spot the signs.</div></div>
+    </div>
+    <div class="cover-main"><div class="kicker">Official software guide</div><h1>Localhost &amp;<br>Setup Guide</h1><div class="lead">Understand the platform, why responsible package screening matters, and how to run PharmaLens locally—from guest mode to the complete Supabase-backed environment.</div></div>
+    <div class="edition"><span>Version 1.0 · October 2026</span><span>Preliminary visual screening—not certification</span></div>
+  </section>
+
+  <section class="page">
+    <div class="section-mark">01 · Product overview</div><h2>About PharmaLens</h2>
+    <p class="intro">PharmaLens is a mobile-first application that helps people examine visible information on pharmaceutical packaging marketed in Nigeria. It combines guided photography, browser-based OCR, user-reviewed fields, and documented reference records.</p>
+    <div class="callout"><strong>Essential boundary.</strong> An image cannot establish chemical composition, pharmaceutical quality, regulatory approval, authenticity, or whether a medicine is safe to take.</div>
+    <h3>The three outcomes</h3>
+    <div class="outcomes"><div class="outcome match"><h3>Reference match</h3><p>Compared label details are consistent with an available published reference.</p></div><div class="outcome review"><h3>Needs review</h3><p>A visible discrepancy warrants further checking by an appropriate professional.</p></div><div class="outcome"><h3>Unable to verify</h3><p>The image, extracted evidence, or reference coverage is insufficient.</p></div></div>
+    <h3>Core capabilities</h3>
+    <div class="grid"><div class="card"><h3>Camera-first capture</h3><p>Rear-camera preference, uploads, rotation, optional panels, compression, and measured quality checks.</p></div><div class="card"><h3>Real OCR</h3><p>Tesseract.js reads visible label text locally in the browser. Users confirm and correct uncertain values.</p></div><div class="card"><h3>Transparent screening</h3><p>Versioned rules compare supported label details without inventing detection scores or verdicts.</p></div><div class="card"><h3>Private evidence</h3><p>Device-only guest history or account-scoped records with private, consent-controlled image retention.</p></div><div class="card"><h3>Reference governance</h3><p>Draft, published, retired, and withdrawn versions preserve provenance and historical evidence.</p></div><div class="card"><h3>Review workflow</h3><p>Explicitly consented requests enter a private reviewer queue with status history and audit events.</p></div></div>
+    <div class="footer-brand"><span></span> PharmaLens</div><div class="page-no"><b>02</b> / 07</div>
+  </section>
+
+  <section class="page">
+    <div class="section-mark">02 · Why it matters</div><h2>Useful signals, responsibly presented</h2>
+    <p class="intro">Packaging can reveal useful warning signs—such as inconsistent strength, manufacturer details, expiry information, registration text, or unreadable labelling. PharmaLens helps organise these observations without overstating what a photograph can prove.</p>
+    <div class="grid"><div class="card"><div class="number">1</div><h3>An accessible first check</h3><p>A phone camera can help capture and review package information before a user seeks professional advice.</p></div><div class="card"><div class="number">2</div><h3>Evidence people can inspect</h3><p>The result shows what was observed, which source was used, and what remains unresolved.</p></div><div class="card"><div class="number">3</div><h3>Careful result language</h3><p>The interface never labels a medicine “genuine,” “safe,” or “NAFDAC approved” from an image.</p></div><div class="card"><div class="number">4</div><h3>Privacy by design</h3><p>OCR runs locally. Guest records stay on the device. Images upload only after explicit retention consent.</p></div></div>
+    <h3>How information moves</h3>
+    <table><thead><tr><th>Mode</th><th>Processing</th><th>Storage</th></tr></thead><tbody><tr><td><strong>Guest</strong></td><td>Image correction, quality checks, OCR, and decision rules run in the browser.</td><td>Saved scan details remain in browser storage. They are never silently synced after login.</td></tr><tr><td><strong>Account</strong></td><td>OCR still runs in the browser. Published reference metadata may be queried from Supabase.</td><td>Scan evidence can be saved privately. Images require separate upload and retention consent.</td></tr><tr><td><strong>Review</strong></td><td>The owner explicitly selects a saved scan, describes the concern, and consents.</td><td>The request stays private to the owner and authorised reviewers. It is not sent to a regulator.</td></tr></tbody></table>
+    <div class="callout warning"><strong>Professional boundary.</strong> PharmaLens supports careful decision-making. It does not replace a licensed pharmacist, laboratory analysis, regulator, or authorised item-authentication service.</div>
+    <div class="footer-brand"><span></span> PharmaLens</div><div class="page-no"><b>03</b> / 07</div>
+  </section>
+
+  <section class="page">
+    <div class="section-mark">03 · Quick start</div><h2>Run on localhost in minutes</h2>
+    <p class="intro">Quick mode runs the interface, local OCR, guest history, legal pages, and fictional demonstration without cloud credentials.</p>
+    <h3>Before you begin</h3>
+    <ul class="checklist"><li>Node.js 22 or newer</li><li>npm, included with Node.js</li><li>Git and a current web browser</li><li>A camera or sample package image for testing</li></ul>
+    <h3>Install and start</h3>
+    <div class="terminal"><span class="dim"># Clone the application</span>
+git clone https://github.com/Ustaztech/Pharmalens.git
+cd Pharmalens
+
+<span class="dim"># Install exact locked dependencies</span>
+npm ci
+
+<span class="dim"># Start the Next.js development server</span>
+npm run dev</div>
+    <p>Open <strong>http://localhost:3000</strong>.</p>
+    <div class="callout warning"><strong>Guest-mode note.</strong> Do not copy <code>.env.example</code> for guest-only use. Placeholder Supabase values count as configured values and cause failed account requests. With no <code>.env.local</code>, the app stays in guest mode.</div>
+    <h3>Available immediately</h3>
+    <div class="grid"><div class="card"><h3>✓ Guest scanning</h3><p>Capture or upload, run local OCR, correct extracted details, and receive an evidence-limited result.</p></div><div class="card"><h3>✓ Device history</h3><p>Save up to 20 guest records in the current browser. Nothing is uploaded.</p></div><div class="card"><h3>✓ Demo mode</h3><p>Open <code>/demo</code> for clearly labelled fictional records, separate from real scans.</p></div><div class="card"><h3>— Account features</h3><p>Authentication, cloud history, reports, and administration remain unavailable until Supabase is configured.</p></div></div>
+    <div class="footer-brand"><span></span> PharmaLens</div><div class="page-no"><b>04</b> / 07</div>
+  </section>
+
+  <section class="page">
+    <div class="section-mark">04 · Full local stack</div><h2>Connect Supabase</h2>
+    <div class="step"><div class="number">1</div><div><h3>Create a development project</h3><p>Create a disposable Supabase project. Copy its project URL and publishable/anonymous key. Never expose a service-role key to the browser.</p></div></div>
+    <div class="step"><div class="number">2</div><div><h3>Create the local environment file</h3><div class="terminal">cp .env.example .env.local</div><p>Replace every placeholder with the real development-project value:</p><div class="terminal">NEXT_PUBLIC_SUPABASE_URL=https://your-real-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-real-anon-key
+NEXT_PUBLIC_DEMO_MODE=false</div></div></div>
+    <div class="step"><div class="number">3</div><div><h3>Apply the database migrations</h3><p>Run every file in <code>supabase/migrations/</code> in numeric order. They create profiles, roles, catalogue versions, scans, private storage, reports, consent, audit records, and row-level policies.</p></div></div>
+    <div class="step"><div class="number">4</div><div><h3>Allow the auth callback</h3><p>Add <code>http://localhost:3000/auth/callback</code> to Supabase Auth redirect URLs. Configure an email provider to test verification and password recovery.</p></div></div>
+    <div class="step"><div class="number">5</div><div><h3>Restart and create a user</h3><div class="terminal">npm run dev</div><p>Environment changes are read when the development server starts.</p></div></div>
+    <div class="step"><div class="number">6</div><div><h3>Assign administration safely</h3><p>New accounts always receive the <code>user</code> role. After identity verification, assign the first administrator directly in PostgreSQL:</p><div class="terminal">update public.profiles
+set role = 'admin'
+where id = '&lt;verified-user-uuid&gt;';</div></div></div>
+    <div class="footer-brand"><span></span> PharmaLens</div><div class="page-no"><b>05</b> / 07</div>
+  </section>
+
+  <section class="page">
+    <div class="section-mark">05 · Daily development</div><h2>Use and verify the application</h2>
+    <h3>Complete a local scan</h3>
+    <ol><li>Open <code>/scan</code> and use the rear camera or choose an image.</li><li>Keep the entire front panel visible in bright, even light.</li><li>Add back or side panels when they contain batch, expiry, or manufacturer evidence.</li><li>Review OCR text and correct uncertain values.</li><li>Select <strong>Screen label details</strong> and read the evidence scope and expiry status.</li><li>Save to device-only or private account history when appropriate.</li></ol>
+    <h3>Verification commands</h3>
+    <div class="terminal">npm test
+npm run lint
+npm run build
+npm run test:e2e</div>
+    <p>If Playwright reports that Chromium is missing:</p><div class="terminal">npx playwright install chromium
+npm run test:e2e</div>
+    <h3>Reference governance</h3>
+    <div class="grid"><div class="card"><h3>Draft first</h3><p>New product reference versions begin as drafts and require provenance and review.</p></div><div class="card"><h3>Published only</h3><p>Only published versions participate in normal screening.</p></div><div class="card"><h3>History preserved</h3><p>Updates and withdrawals do not rewrite the reference snapshot attached to an earlier scan.</p></div><div class="card"><h3>No copied proof</h3><p>A registration number, barcode, or QR code is not independent evidence of authenticity.</p></div></div>
+    <div class="callout"><strong>Current verification.</strong> The repository passes TypeScript production build, ESLint, 17 Vitest tests, and 48 Playwright checks across 360, 390, 768, and 1440 px layouts.</div>
+    <div class="footer-brand"><span></span> PharmaLens</div><div class="page-no"><b>06</b> / 07</div>
+  </section>
+
+  <section class="page">
+    <div class="section-mark">06 · Support and boundaries</div><h2>Troubleshooting</h2>
+    <table><thead><tr><th>Problem</th><th>What to do</th></tr></thead><tbody><tr><td>Account services are unavailable</td><td>Use real Supabase values in <code>.env.local</code> and restart. For guest mode, remove the file rather than keeping placeholders.</td></tr><tr><td>Camera access is denied</td><td>Grant browser permission, close competing camera apps, or choose an image. Non-local deployments require HTTPS.</td></tr><tr><td>First OCR scan is slow</td><td>Tesseract.js loads OCR resources in the browser. Keep the tab open and use a sharp, well-lit image.</td></tr><tr><td>Readable product cannot be verified</td><td>A published reference or required field may be missing. PharmaLens correctly returns “Unable to verify” when evidence is insufficient.</td></tr><tr><td>Verification email is missing</td><td>Check the Supabase email provider, templates, rate limits, redirect URLs, and spam folder.</td></tr><tr><td>Port 3000 is occupied</td><td>Run <code>npm run dev -- -p 3001</code>, then add the matching auth callback URL if needed.</td></tr></tbody></table>
+    <h3>Before a public launch</h3>
+    <ul class="checklist"><li>Provide attributable, reviewed reference data and authorised reviewers.</li><li>Define retention periods, operator identity, support contacts, and operating procedures.</li><li>Configure monitoring, backups, rate limits, and incident response.</li><li>Complete privacy, security, accessibility, legal, and regulatory review.</li><li>Validate physical-device camera behaviour across supported mobile browsers.</li><li>Independently validate any medicine-authenticity claims or future visual model.</li></ul>
+    <div class="callout warning"><strong>A successful build is not clinical validation.</strong> PharmaLens must not be described as a validated counterfeit detector or as proof that a medicine is genuine, approved, or safe.</div>
+    <h3>Technical references</h3><p class="small">See <code>README.md</code> and <code>docs/ARCHITECTURE.md</code>, <code>SCREENING_POLICY.md</code>, <code>PRIVACY_AND_DATA_FLOW.md</code>, <code>DEPLOYMENT.md</code>, <code>EXTERNAL_DEPENDENCIES.md</code>, and <code>TEST_RESULTS.md</code>.</p>
+    <div class="footer-brand"><span></span> PharmaLens</div><div class="page-no"><b>07</b> / 07</div>
+  </section>
+</main></body></html>

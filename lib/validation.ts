@@ -1,14 +1,16 @@
 import { z } from "zod";
 
+export const passwordSchema = z.string().min(8, "Use at least 8 characters").max(72, "Password is too long");
+
 export const authSchema = z.object({
-  email: z.email("Enter a valid email address"),
-  password: z.string().min(8, "Use at least 8 characters"),
+  email: z.string().trim().toLowerCase().pipe(z.email("Enter a valid email address")),
+  password: passwordSchema,
 });
 
 export const reportSchema = z.object({
   scanId: z.string().min(1),
   reason: z.enum(["packaging_discrepancy", "registration_concern", "expiry_concern", "other"]),
-  notes: z.string().max(1000).optional(),
+  notes: z.string().trim().min(10, "Describe what you observed in at least 10 characters").max(1000),
   consentToShare: z.literal(true, { error: "Consent is required before a report can be submitted" }),
 });
 
